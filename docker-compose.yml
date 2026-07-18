@@ -1,0 +1,7 @@
+services:
+  gateway:
+    build: ./services/api-gateway
+    ports:
+      - "8000:8000"
+    environment:
+      RESPONSE_MODE: simulation

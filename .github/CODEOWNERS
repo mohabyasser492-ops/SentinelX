@@ -1,0 +1,11 @@
+/services/ai-security-brain/ @AI1_USERNAME
+/services/ai-query-intelligence/ @AI2_USERNAME
+/services/ai-behavior-engine/ @AI3_USERNAME
+/integrations/wazuh/ @SECURITY1_USERNAME
+/integrations/sysmon/ @SECURITY1_USERNAME
+/integrations/suricata/ @SECURITY1_USERNAME
+/security-content/detections/ @SECURITY1_USERNAME
+/services/incident-service/ @SECURITY2_USERNAME
+/services/response-orchestrator/ @SECURITY2_USERNAME
+/security-content/playbooks/ @SECURITY2_USERNAME
+/schemas/ @AI1_USERNAME @AI2_USERNAME @AI3_USERNAME @SECURITY1_USERNAME @SECURITY2_USERNAME
