@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.sentinelx.local/events/v1/normalization-metadata.schema.json",
+  "title": "Normalization Metadata",
+  "description": "Records how source-native telemetry was normalized.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "normalizer",
+    "normalizer_version",
+    "mapping_version",
+    "source_product",
+    "source_vendor",
+    "source_event_id",
+    "normalized_at"
+  ],
+  "properties": {
+    "normalizer": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "normalizer_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "mapping_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "source_product": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "source_vendor": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "source_event_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "normalized_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "warnings": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1000
+      }
+    }
+  }
+}

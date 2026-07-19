@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.sentinelx.local/events/v1/security-event.schema.json",
+  "title": "SentinelX Security Event",
+  "description": "Tenant-scoped normalized security telemetry with evidence provenance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_id",
+    "tenant_id",
+    "observed_at",
+    "ingested_at",
+    "ocsf",
+    "normalization",
+    "raw_evidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Version of the SentinelX security-event payload contract."
+    },
+    "event_id": {
+      "$ref": "../../common/v1/identifier.schema.json"
+    },
+    "tenant_id": {
+      "$ref": "../../common/v1/identifier.schema.json"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ingested_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ocsf": {
+      "type": "object",
+      "description": "OCSF-compatible event payload. Event-class attributes remain extensible.",
+      "required": [
+        "class_uid",
+        "category_uid",
+        "activity_id",
+        "type_uid",
+        "severity_id",
+        "time",
+        "metadata"
+      ],
+      "properties": {
+        "class_uid": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "class_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category_uid": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "category_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "activity_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "activity_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type_uid": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "type_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "severity_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "severity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "time": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Event time expressed as Unix epoch milliseconds."
+        },
+        "metadata": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "normalization": {
+      "$ref": "normalization-metadata.schema.json"
+    },
+    "raw_evidence": {
+      "$ref": "raw-evidence-reference.schema.json"
+    }
+  }
+}

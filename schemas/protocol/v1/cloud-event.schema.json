@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.sentinelx.local/protocol/v1/cloud-event.schema.json",
+  "title": "SentinelX CloudEvent Envelope",
+  "description": "Transport-independent envelope for SentinelX domain events.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "specversion",
+    "id",
+    "source",
+    "type",
+    "time",
+    "datacontenttype",
+    "dataschema",
+    "tenantid",
+    "correlationid",
+    "trace",
+    "data"
+  ],
+  "properties": {
+    "specversion": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "source": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 2048
+    },
+    "type": {
+      "type": "string",
+      "pattern": "^io\\.sentinelx\\.[a-z0-9]+(?:\\.[a-z0-9]+)*\\.v[1-9][0-9]*$",
+      "maxLength": 255
+    },
+    "subject": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 512
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "datacontenttype": {
+      "type": "string",
+      "const": "application/json"
+    },
+    "dataschema": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 2048
+    },
+    "tenantid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "correlationid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "trace": {
+      "$ref": "../../common/v1/trace-context.schema.json"
+    },
+    "data": {
+      "type": "object"
+    }
+  }
+}

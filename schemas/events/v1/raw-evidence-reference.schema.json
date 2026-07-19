@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.sentinelx.local/events/v1/raw-evidence-reference.schema.json",
+  "title": "Raw Evidence Reference",
+  "description": "Immutable reference to source-native security evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "storage_provider",
+    "object_key",
+    "sha256",
+    "content_type",
+    "captured_at"
+  ],
+  "properties": {
+    "storage_provider": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "object_key": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048
+    },
+    "version_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 512
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_type": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "content_length": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "encryption_key_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 2048
+    }
+  }
+}
