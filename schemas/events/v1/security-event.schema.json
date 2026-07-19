@@ -6,6 +6,7 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
+    "schema_version",
     "event_id",
     "tenant_id",
     "observed_at",
@@ -15,6 +16,11 @@
     "raw_evidence"
   ],
   "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Version of the SentinelX security-event payload contract."
+    },
     "event_id": {
       "$ref": "../../common/v1/identifier.schema.json"
     },
