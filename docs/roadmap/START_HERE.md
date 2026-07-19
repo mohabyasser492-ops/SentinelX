@@ -16,4 +16,4 @@ git switch -c security/event-schema-v1
 ```
 
 ## First milestone
-Freeze `schemas/events/security-event-v1.schema.json`, then build Scenario A: failed logins -> successful login -> suspicious PowerShell -> incident -> explanation -> simulated response.
+Freeze `schemas/events/v1/security-event.schema.json`, then build Scenario A: failed logins -> successful login -> suspicious PowerShell -> incident -> explanation -> simulated response.

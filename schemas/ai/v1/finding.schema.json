@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.sentinelx.local/ai/v1/finding.schema.json",
+  "title": "SentinelX AI Finding",
+  "description": "An evidence-backed conclusion produced by an AI analysis.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "finding_id",
+    "title",
+    "description",
+    "severity",
+    "disposition",
+    "confidence",
+    "evidence",
+    "attack_references"
+  ],
+  "properties": {
+    "finding_id": {
+      "$ref": "../../common/v1/identifier.schema.json"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10000
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "informational",
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "disposition": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "expected_activity",
+        "suspicious",
+        "malicious",
+        "insufficient_evidence"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "../../common/v1/evidence-reference.schema.json"
+      }
+    },
+    "attack_references": {
+      "type": "array",
+      "items": {
+        "$ref": "attack-reference.schema.json"
+      }
+    }
+  }
+}

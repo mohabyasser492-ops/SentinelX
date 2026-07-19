@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.sentinelx.local/ai/v1/analysis-command.schema.json",
+  "title": "SentinelX AI Analysis Command",
+  "description": "A tenant-scoped and policy-governed request for AI analysis.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "command_id",
+    "tenant_id",
+    "idempotency_key",
+    "requested_at",
+    "deadline",
+    "capabilities",
+    "event_ids",
+    "context",
+    "policy"
+  ],
+  "properties": {
+    "command_id": {
+      "$ref": "../../common/v1/identifier.schema.json"
+    },
+    "tenant_id": {
+      "$ref": "../../common/v1/identifier.schema.json"
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "requested_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "deadline": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "alert_explanation",
+          "incident_summarization",
+          "attack_mapping",
+          "risk_assessment",
+          "response_recommendation"
+        ]
+      }
+    },
+    "event_ids": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10000,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "../../common/v1/identifier.schema.json"
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_ids",
+        "asset_criticality"
+      ],
+      "properties": {
+        "alert_id": {
+          "anyOf": [
+            {
+              "$ref": "../../common/v1/identifier.schema.json"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "incident_id": {
+          "anyOf": [
+            {
+              "$ref": "../../common/v1/identifier.schema.json"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "asset_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          }
+        },
+        "asset_criticality": {
+          "type": "string",
+          "enum": [
+            "unknown",
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allow_external_network",
+        "allow_response_recommendations",
+        "allow_automated_execution",
+        "require_evidence",
+        "require_attack_knowledge_source",
+        "maximum_findings",
+        "maximum_recommendations"
+      ],
+      "properties": {
+        "allow_external_network": {
+          "type": "boolean"
+        },
+        "allow_response_recommendations": {
+          "type": "boolean"
+        },
+        "allow_automated_execution": {
+          "type": "boolean",
+          "const": false
+        },
+        "require_evidence": {
+          "type": "boolean",
+          "const": true
+        },
+        "require_attack_knowledge_source": {
+          "type": "boolean"
+        },
+        "maximum_findings": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "maximum_recommendations": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    }
+  }
+}

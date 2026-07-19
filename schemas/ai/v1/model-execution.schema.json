@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.sentinelx.local/ai/v1/model-execution.schema.json",
+  "title": "SentinelX Model Execution",
+  "description": "Reproducibility and processing metadata for an AI execution.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "model",
+    "started_at",
+    "completed_at",
+    "input_event_count",
+    "retrieved_document_count",
+    "duration_ms"
+  ],
+  "properties": {
+    "model": {
+      "$ref": "../../common/v1/model-identity.schema.json"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "input_event_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "retrieved_document_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "input_tokens": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "output_tokens": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    }
+  }
+}

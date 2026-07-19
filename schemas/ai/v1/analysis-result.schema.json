@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.sentinelx.local/ai/v1/analysis-result.schema.json",
+  "title": "SentinelX AI Analysis Result",
+  "description": "Auditable output from a governed SentinelX AI analysis.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "analysis_id",
+    "command_id",
+    "tenant_id",
+    "status",
+    "executive_summary",
+    "findings",
+    "recommendation_ids",
+    "limitations",
+    "execution"
+  ],
+  "properties": {
+    "analysis_id": {
+      "$ref": "../../common/v1/identifier.schema.json"
+    },
+    "command_id": {
+      "$ref": "../../common/v1/identifier.schema.json"
+    },
+    "tenant_id": {
+      "$ref": "../../common/v1/identifier.schema.json"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "partial",
+        "failed"
+      ]
+    },
+    "executive_summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20000
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "finding.schema.json"
+      }
+    },
+    "recommendation_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "../../common/v1/identifier.schema.json"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 5000
+      }
+    },
+    "execution": {
+      "$ref": "model-execution.schema.json"
+    }
+  }
+}

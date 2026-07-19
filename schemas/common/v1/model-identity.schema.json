@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.sentinelx.local/common/v1/model-identity.schema.json",
+  "title": "SentinelX Model Identity",
+  "description": "Immutable identity and provenance of an AI model execution.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provider",
+    "model_name",
+    "model_version",
+    "model_digest",
+    "prompt_version",
+    "knowledge_base_version"
+  ],
+  "properties": {
+    "provider": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "model_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "model_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "model_digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "prompt_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "knowledge_base_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    }
+  }
+}

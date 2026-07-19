@@ -1,0 +1,104 @@
+{
+  "registry_version": "1.0.0",
+  "compatibility": "backward_transitive",
+  "contracts": [
+    {
+      "name": "sentinelx.common.identifier",
+      "major_version": 1,
+      "path": "common/v1/identifier.schema.json",
+      "owner": "architecture",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.common.trace-context",
+      "major_version": 1,
+      "path": "common/v1/trace-context.schema.json",
+      "owner": "architecture",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.common.evidence-reference",
+      "major_version": 1,
+      "path": "common/v1/evidence-reference.schema.json",
+      "owner": "ai1",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.common.model-identity",
+      "major_version": 1,
+      "path": "common/v1/model-identity.schema.json",
+      "owner": "ai1",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.common.problem-details",
+      "major_version": 1,
+      "path": "common/v1/problem-details.schema.json",
+      "owner": "architecture",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.protocol.cloud-event",
+      "major_version": 1,
+      "path": "protocol/v1/cloud-event.schema.json",
+      "owner": "architecture",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.events.raw-evidence-reference",
+      "major_version": 1,
+      "path": "events/v1/raw-evidence-reference.schema.json",
+      "owner": "sec1",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.events.normalization-metadata",
+      "major_version": 1,
+      "path": "events/v1/normalization-metadata.schema.json",
+      "owner": "sec1",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.events.security-event",
+      "major_version": 1,
+      "path": "events/v1/security-event.schema.json",
+      "owner": "ai1",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.ai.attack-reference",
+      "major_version": 1,
+      "path": "ai/v1/attack-reference.schema.json",
+      "owner": "ai1",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.ai.finding",
+      "major_version": 1,
+      "path": "ai/v1/finding.schema.json",
+      "owner": "ai1",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.ai.model-execution",
+      "major_version": 1,
+      "path": "ai/v1/model-execution.schema.json",
+      "owner": "ai1",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.ai.analysis-command",
+      "major_version": 1,
+      "path": "ai/v1/analysis-command.schema.json",
+      "owner": "ai1",
+      "status": "development"
+    },
+    {
+      "name": "sentinelx.ai.analysis-result",
+      "major_version": 1,
+      "path": "ai/v1/analysis-result.schema.json",
+      "owner": "ai1",
+      "status": "development"
+    }
+  ]
+}
